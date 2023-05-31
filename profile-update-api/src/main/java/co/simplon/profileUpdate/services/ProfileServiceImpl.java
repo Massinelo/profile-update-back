@@ -8,6 +8,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,6 +20,7 @@ import co.simplon.profileUpdate.entities.Profile;
 import co.simplon.profileUpdate.repositories.ProfileRepository;
 
 @Service
+@org.springframework.transaction.annotation.Transactional(readOnly = true)
 public class ProfileServiceImpl implements ProfileService {
 
     private ProfileRepository profiles;
@@ -35,6 +38,7 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
+    @Transactional
     public void update(ProfileUpdateDto inputs, Long id) {
 	Profile entity = profiles.findById(id).get();
 

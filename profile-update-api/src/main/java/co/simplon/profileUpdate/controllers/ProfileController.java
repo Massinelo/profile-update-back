@@ -28,9 +28,10 @@ public class ProfileController {
     }
 
     @PatchMapping("/1")
-    public void update(
+    public String update(
 	    @ModelAttribute @Valid ProfileUpdateDto inputs) {
 	service.update(inputs, 1L);
+	return service.getProfile(1L).getAvatar();
 
     }
 

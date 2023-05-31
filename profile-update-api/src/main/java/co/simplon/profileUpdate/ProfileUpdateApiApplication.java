@@ -9,7 +9,7 @@ public class ProfileUpdateApiApplication {
     public static void main(String[] args) {
 	SpringApplication.run(
 		ProfileUpdateApiApplication.class, args);
-	System.out.println("yooooo ca roule ? :)");
+	System.out.println("Yoooo ca roule ? :)");
     }
 
 }
