@@ -1,13 +1,5 @@
 package co.simplon.profileUpdate.services;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.UUID;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -43,15 +35,7 @@ public class ProfileServiceImpl implements ProfileService {
 	Profile entity = profiles.findById(id).get();
 
 	if ((inputs.getAvatar() != null)) {
-	    Path oldAvatar = Paths.get(uploadDir,
-		    entity.getAvatar());
-	    MultipartFile file = inputs.getAvatar();
-	    String baseName = UUID.randomUUID().toString();
-	    String fileName = baseName + inputs.getAvatar()
-		    .getOriginalFilename();
-	    entity.setAvatar(fileName);
-	    store(file, fileName);
-	    oldAvatar.toFile().delete();
+	    // to do
 
 	}
 	entity.setDescription(inputs.getDescription());
@@ -61,14 +45,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     private void store(MultipartFile file,
 	    String fileName) {
-	Path uploadPath = Paths.get(uploadDir);
-	Path target = uploadPath.resolve(fileName);
-	try (InputStream in = file.getInputStream()) {
-	    Files.copy(in, target,
-		    StandardCopyOption.REPLACE_EXISTING);
-	} catch (IOException ex) {
-	    throw new RuntimeException(ex);
-	}
+	// to do
 
     }
 
